@@ -1,0 +1,43 @@
+import paramiko
+import json
+import cli
+import pprint
+
+def read_devices_info(devices_file = 'host_info.txt'):
+        file = open(devices_file, 'r')
+        devices = {}
+        for line in file:
+                device = line.strip().split(',')
+                if device[0] not in devices:
+                        devices[device[0]] = device[1]
+                else:
+                        print 'Warning!!! duplicated devices' + device[0] + 'found'
+        return devices
+
+def ssh_connect_to_device(mgmt_ip, username = 'ACOE-DCN_P_DCNM', password = '21588Sp5520A7315'):
+        print '--- Attempting paramiko connection to: ' + mgmt_ip
+        ssh_client = paramiko.SSHClient()
+        ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+        # Make the connection to our host.
+        ssh_client.connect(hostname=mgmt_ip, username=username, password=password)
+        return ssh_client
+
+def get_vlans_has_vxlan(ssh_session):
+        vlans = []
+        stdin, stdout, stderr = ssh_session.exec_command('show vxlan')
+        show_vxlan = stdout.readlines()
+        for line in show_vxlan[2:]:
+                #print line
+                vlan_vxlan = line.split('\t\t')
+                vlans.append(int(vlan_vxlan[0]))
+        return vlans
+
+devices = read_devices_info()
+print devices
+for key, value in devices.items():
+        session = ssh_connect_to_device(mgmt_ip = value)
+        vlans = get_vlans_has_vxlan(session)
+        session.close()
+        for vlan in vlans:
+                print vlan

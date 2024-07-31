@@ -1,0 +1,29 @@
+CBPDCNNC-N48GE2B-RT01# show file pt1.py
+import cli
+import json
+
+
+clidop = cli.clid('show cdp neighbor')
+print(type(clidop))
+print(clidop)
+
+
+CBPDCNNC-N48GE2B-RT01# python pt1.py
+<type 'str'>
+{"TABLE_cdp_neighbor_brief_info": {"ROW_cdp_neighbor_brief_info": [{"ifindex": "436232192", "device_id": "CBPDCNSP-N48GE2B-RT01.net.cba(FGE20240C58)", "intf_id": "Ethernet1/49", "ttl": "149", "capability": ["router", "switch", "Supports-STP-Dispute"], "platform_id": "N9K-C9508", "port_id": "Ethernet1/10"}, {"ifindex": "436232704", "device_id": "CBPDCNSP-N48GE2B-RT02.net.cba(FGE20300HBZ)", "intf_id": "Ethernet1/50", "ttl": "149", "capability": ["router", "switch", "Supports-STP-Dispute"], "platform_id": "N9K-C9508", "port_id": "Ethernet1/10"}, {"ifindex": "436233216", "device_id": "CBPDCNSP-N48GE2C-RT01.net.cba(FGE20290GXF)", "intf_id": "Ethernet1/51", "ttl": "149", "capability": ["router", "switch", "Supports-STP-Dispute"], "platform_id": "N9K-C9508", "port_id": "Ethernet1/10"}, {"ifindex": "436233728", "device_id": "CBPDCNSP-N48GE2C-RT02.net.cba(FGE20290GXQ)", "intf_id": "Ethernet1/52", "ttl": "149", "capability": ["router", "switch", "Supports-STP-Dispute"], "platform_id": "N9K-C9508", "port_id": "Ethernet1/10"}, {"ifindex": "436234240", "device_id": "CBPDCNNC-N48GE2B-RT02.net.cba(FDO21412TPB)", "intf_id": "Ethernet1/53", "ttl": "170", "capability": ["router", "switch", "IGMP_cnd_filtering", "Supports-STP-Dispute"], "platform_id": "N9K-C93180YC-EX", "port_id": "Ethernet1/53"}, {"ifindex": "436234752", "device_id": "CBPDCNNC-N48GE2B-RT02.net.cba(FDO21412TPB)", "intf_id": "Ethernet1/54", "ttl": "170", "capability": ["router", "switch", "IGMP_cnd_filtering", "Supports-STP-Dispute"], "platform_id": "N9K-C93180YC-EX", "port_id": "Ethernet1/54"}]}, "neigh_count": "6"}
+CBPDCNNC-N48GE2B-RT01# 
+
+after format, it looks like the following:
+
+{
+	"TABLE_cdp_neighbor_brief_info": 
+		{"ROW_cdp_neighbor_brief_info": [{"ifindex": "436232192", "device_id": "CBPDCNSP-N48GE2B-RT01.net.cba(FGE20240C58)", "intf_id": "Ethernet1/49", "ttl": "149", "capability": ["router", "switch", "Supports-STP-Dispute"], "platform_id": "N9K-C9508", "port_id": "Ethernet1/10"}, 
+										 {"ifindex": "436232704", "device_id": "CBPDCNSP-N48GE2B-RT02.net.cba(FGE20300HBZ)", "intf_id": "Ethernet1/50", "ttl": "148", "capability": ["router", "switch", "Supports-STP-Dispute"], "platform_id": "N9K-C9508", "port_id": "Ethernet1/10"}, 
+										 {"ifindex": "436233216", "device_id": "CBPDCNSP-N48GE2C-RT01.net.cba(FGE20290GXF)", "intf_id": "Ethernet1/51", "ttl": "149", "capability": ["router", "switch", "Supports-STP-Dispute"], "platform_id": "N9K-C9508", "port_id": "Ethernet1/10"}, 
+										 {"ifindex": "436233728", "device_id": "CBPDCNSP-N48GE2C-RT02.net.cba(FGE20290GXQ)", "intf_id": "Ethernet1/52", "ttl": "149", "capability": ["router", "switch", "Supports-STP-Dispute"], "platform_id": "N9K-C9508", "port_id": "Ethernet1/10"}, 
+										 {"ifindex": "436234240", "device_id": "CBPDCNNC-N48GE2B-RT02.net.cba(FDO21412TPB)", "intf_id": "Ethernet1/53", "ttl": "170", "capability": ["router", "switch", "IGMP_cnd_filtering", "Supports-STP-Dispute"], "platform_id": "N9K-C93180YC-EX", "port_id": "Ethernet1/53"}, 
+										 {"ifindex": "436234752", "device_id": "CBPDCNNC-N48GE2B-RT02.net.cba(FDO21412TPB)", "intf_id": "Ethernet1/54", "ttl": "170", "capability": ["router", "switch", "IGMP_cnd_filtering", "Supports-STP-Dispute"], "platform_id": "N9K-C93180YC-EX", "port_id": "Ethernet1/54"}
+										]
+		}, 
+	"neigh_count": "6"
+}

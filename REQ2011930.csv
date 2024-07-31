@@ -1,0 +1,17 @@
+Request Number/Basket ID,REQ1534367,,,,,,,,,
+Item Number,RITM1885565,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+"Required Information
+Port will not be configured if information is missing",,,,"Optional Information
+Default value in brackets will be used if left blank",,,,,,
+Switch Hostname,port,vlans,Port Description,"access or trunk
+(access)","vpc
+(none)","mtu
+(9216)","speed
+(auto)","duplex
+(auto)","shutdown
+(no)","overwrite
+(no)"
+CBPDCNNL-N09IRH1-RT01,e1/6,"555,560,881,885,969",SLANC-UPD-AAUNSWB48-old-DATA,,yes,,,,,
+CBPDCNNL-N09IRH1-RT02,e1/6,"555,560,881,885,969",SLANC-UPD-AAUNSWB48-old-DATA,,yes,,,,,

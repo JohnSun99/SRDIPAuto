@@ -1,0 +1,33 @@
+Request Number/Basket ID,REQ1534367,,,,,,,,,
+Item Number,RITM1885565,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+"Required Information
+Port will not be configured if information is missing",,,,"Optional Information
+Default value in brackets will be used if left blank",,,,,,
+Switch Hostname,port,vlans,Port Description,"access or trunk
+(access)","vpc
+(none)","mtu
+(9216)","speed
+(auto)","duplex
+(auto)","shutdown
+(no)","overwrite
+(no)"
+CBPDCNNL-N48GE2C-RT03 ,Eth1/1,2232,SLAC-UPD-CBPSNSIP-N48GE2C-CH01-SNSL-DataIn-CM0761112,trunk,yes,,,,,
+,Eth1/2,2202,SLAC-UPD-CBPSNSIP-N48GE2C-CH01-SNSL-DataOut-CM0761112,trunk,yes,,,,,
+,Eth1/3,2200,SLAC-UPD-CBPSNSIP-N48GE2C-CH01-SNSL-DataCCL-CM0761112,,yes,,,,,
+,Eth1/4,2232,SLAC-UPD-CBPSNSIP-N48GE2C-CH02-SNSL-DataIn-CM0761112,trunk,yes,,,,,
+,Eth1/5,2202,SLAC-UPD-CBPSNSIP-N48GE2C-CH02-SNSL-DataOut-CM0761112,trunk,yes,,,,,
+,Eth1/6,2200,SLAC-UPD-CBPSNSIP-N48GE2C-CH02-SNSL-DataCCL-CM0761112,,yes,,,,,
+,Eth1/7,2272,SLAC-USD-CBSSNSIP-N48GE2C-CH01-SNSL-DataIn-CM0779252,trunk,yes,,,,,
+,Eth1/8,2222,SLAC-USD-CBSSNSIP-N48GE2C-CH01-SNSL-DataOut-CM0779252,trunk,yes,,,,,
+,Eth1/9,2201,SLAC-USD-CBSSNSIP-N48GE2C-CH01-SNSL-DataCCL-CM0779252,,yes,,,,,
+,Eth1/10,2272,SLAC-USD-CBSSNSIP-N48GE2C-CH02-SNSL-DataIn-CM0779252,trunk,yes,,,,,
+,Eth1/11,2222,SLAC-USD-CBSSNSIP-N48GE2C-CH02-SNSL-DataOut-CM0779252,trunk,yes,,,,,
+,Eth1/12,2201,SLAC-USD-CBSSNSIP-N48GE2C-CH02-SNSL-DataCCL-CM0779252,,yes,,,,,
+CBPDCNNL-N09IRH1-RT03 ,Eth1/1,3232,SLAC-UPD-CBPSNSIP-N09IRH1-CH01-SNSL-DataIn-CM0761112,trunk,yes,,,,,
+,Eth1/2,3202,SLAC-UPD-CBPSNSIP-N09IRH1-CH01-SNSL-DataOut-CM0761112,trunk,yes,,,,,
+,Eth1/3,3200,SLAC-UPD-CBPSNSIP-N09IRH1-CH01-SNSL-DataCCL-CM0761112,,yes,,,,,
+,Eth1/4,3232,SLAC-UPD-CBPSNSIP-N09IRH1-CH02-SNSL-DataIn-CM0761112,trunk,yes,,,,,
+,Eth1/5,3202,SLAC-UPD-CBPSNSIP-N09IRH1-CH02-SNSL-DataOut-CM0761112,trunk,yes,,,,,
+,Eth1/6,3200,SLAC-UPD-CBPSNSIP-N09IRH1-CH02-SNSL-DataCCL-CM0761112,,yes,,,,,

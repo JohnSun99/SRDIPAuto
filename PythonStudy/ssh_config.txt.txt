@@ -1,0 +1,10 @@
+host jumphost                   # Intermediate server
+  IdentityFile ~/.ssh/id_rsa    # SSH key to use
+  user d368451
+  hostname 10.70.0.253
+
+host 10.70.0.253:22             # Cisco IOS router pynet-rtr1
+  user d368451
+  hostname 10.70.0.253
+  Port 22
+  ProxyCommand ssh jumphost nc %h %p

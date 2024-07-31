@@ -1,0 +1,85 @@
+from dcnswitchLite import *
+from iosswitchLite import *
+import gen_funs
+from pprint import pprint
+from collections import namedtuple
+import csv
+import datetime
+import time
+
+d_host_ip = gen_funs.d_read_host_file()
+while True:
+    # Read in existing vlan, mac and IP info
+    d_mac_ip = {}
+    ll_item = []
+    Keys = namedtuple('vlan_IP', 'Vlan_ID IP_Add')
+    with open("arp_DC_all.csv", "rb") as infile:
+        reader = csv.reader(infile)
+        next(reader, None)  # skip the headers
+        for row in reader:
+            vlanID = int(row[0])
+            IP = row[1]
+            key1 = Keys(Vlan_ID=vlanID, IP_Add=IP)
+            if key1 not in d_mac_ip:
+                d_mac_ip[key1] = {}
+                d_mac_ip[key1]["MAC"] = row[2]
+                d_mac_ip[key1]["Type"] = row[3]
+                d_mac_ip[key1]["Location"] = row[4]
+                d_mac_ip[key1]["Time"] = row[5]
+    
+    l_hosts = open('task_GWList_DCN.txt', 'r')
+    currentTime = str(datetime.datetime.now())[0:16]
+    for line in l_hosts:
+        gw_name = line.strip('\n').split(' ')
+        gw_name = l_host_info[0]
+        gw_type = l_host_info[1]
+        gw_location = l_host_info[2]
+        gw_vrf = 'YES' in l_host_info[3]
+        switch1 = DCNSwitch(d_host_ip[gw_name])
+      
+        cli = "show vrf | json-p"
+        output = switch1.general_check(cli)
+        l_ip_vrf = output["TABLE_vrf"]["ROW_vrf"]
+        for d_each_vrf in l_ip_vrf:
+            each_vrf = d_each_vrf["vrf_name"]
+            gw_type = each_vrf
+            cli = "show ip arp vrf " + each_vrf + " | i Vlan | grep -v INC"
+            #print cli
+            output = switch1.general_check(cli)
+            
+            for each_item in output:
+                each_arp = str(each_item).strip('\n').strip('\r')
+                s_vlanID = each_arp[46:50]
+                vlanID = int(s_vlanID)
+                if vlanID == 0:
+                    continue
+                Mac = each_arp[26:40]
+                IP = each_arp[0:15].strip(' ')
+                key1 = Keys(Vlan_ID=vlanID, Mac_Add=Mac)
+                #pprint(key1)
+                if key1 not in d_mac_ip:
+                    d_mac_ip[key1] = {}
+                    d_mac_ip[key1]["Type"] = gw_type
+                    d_mac_ip[key1]["Location"] = gw_location           
+                    d_mac_ip[key1]["IP"] = IP
+                    d_mac_ip[key1]["Time"] = currentTime
+    
+
+        for key in sorted(d_mac_ip):
+            #pprint (key)
+            l_item = []
+            l_item.append(key.Vlan_ID)
+            l_item.append(key.Mac_Add)
+            l_item.append(d_mac_ip[key]['IP'])
+            l_item.append(d_mac_ip[key]['Type'])
+            l_item.append(d_mac_ip[key]['Location'])
+            l_item.append(d_mac_ip[key]['Time'])
+            ll_item.append(l_item)
+        
+    l_hosts.close()
+    with open("arp_DC_all.csv",'wb') as f:
+        writer = csv.writer(f)
+        writer.writerow(['Vlan_ID', 'MAC', 'IP', 'Type', 'Location','Time'])
+        writer.writerows(ll_item)
+        
+    time.sleep(1200)

@@ -1,0 +1,63 @@
+1 d_host_ip {'CBPDCNCL-N09IRH1-RT01': '10.89.0.35', 'CBPDCNCL-N09IRH1-RT02': '10.89.0.36'}
+2 d_uni_req 
+{ 'CBPDCNNC-N48GE2A-RT01': [{'Eth103/1/41': {'configured': 'yes',
+                                            'desc': 'SLANC-UPM-beaunsw083-MGMT-CM0154839',
+                                            'duplex': 'auto',
+                                            'mode': 'access',
+                                            'mtu': 9216,
+                                            'overwrite': 'yes',
+                                            'running_config': ['interface Ethernet103/1/41',
+                                                               '  description SLANC-UPM-beaunsw083-MGMT-CM0154839 ',
+                                                               '  no cdp enable',
+                                                               '  switchport access vlan 153',
+                                                               '  spanning-tree port type edge',
+                                                               '  no shutdown',
+                                                               ''],
+                                            'shutdown': 'no',
+                                            'speed': 'auto',
+                                            'up': 'no',
+                                            'vlans': [153],
+                                            'vpc': 0}},
+                           {'Eth104/1/41': {'configured': 'yes',
+                                            'desc': 'SLANC-UPM-beaunsw083-MGMT-CM0154839',
+                                            'duplex': 'auto',
+                                            'mode': 'access',
+                                            'mtu': 9216,
+                                            'overwrite': 'yes',
+                                            'running_config': ['interface Ethernet104/1/41',
+                                                               '  description SLANC-UPM-beaunsw083-MGMT-CM0154839 ',
+                                                               '  no cdp enable',
+                                                               '  switchport access vlan 153',
+                                                               '  spanning-tree port type edge',
+                                                               '  no shutdown',
+                                                               ''],
+                                            'shutdown': 'no',
+                                            'speed': 'auto',
+                                            'up': 'no',
+                                            'vlans': [153],
+                                            'vpc': 0}}]}
+3 d_req_vPCs
+{'CBPDCNFL-N48GE2A-RT01': [217,221],
+ 'CBPDCNFL-N48GE2A-RT02': [217,221],
+ 'CBPDCNNC-N48GE2A-RT01': []}
+
+4 d_req_vlans {CBPDCNNC-N48GE2A-RT01': [153]}
+
+5 d_switches
+6 d_configured_ports
+7 d_peers
+{'CBPDCNFL-N48GE2A-RT01': 'CBPDCNFL-N48GE2A-RT02',
+ 'CBPDCNFL-N48GE2A-RT02': 'CBPDCNFL-N48GE2A-RT01',
+ 'CBPDCNNC-N48GE2A-RT01': 'CBPDCNNC-N48GE2A-RT02'}
+
+8 d_peer_req_vlans {'CBPDCNNC-N48GE2A-RT01': [153]}
+9 d_peer_req_new_vlans
+{'CBPDCNFL-N48GE2A-RT01': [],
+ 'CBPDCNFL-N48GE2A-RT02': [],
+ 'CBPDCNNC-N48GE2A-RT01': []}
+
+10 
+
+
+print '\n '
+pprint()
